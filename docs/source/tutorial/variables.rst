@@ -8,86 +8,49 @@ Variables
     * **Exercises:** 5 min
 
         **Objectives:**
-            #. Learn how to write a PBS job script for Gadi.
-            #. Learn how to launch a job in Gadi.
+            #. Learn about variables in Python
 
-1.  Which project are you using?
-2.  Which job queue are you planning to use?
-3.  How many CPU cores are required for your task?
-4.  How many GPUs do you need?
-5.  What is the estimated runtime of your program?
-6.  Which modules are necessary to execute the program?
-7.  What script or command will you use to run the program?
+A variable is like a *container* or a *label* that holds a value you can use and change later in a program.
 
-
-.. code-block:: console
+..  code-block:: python
     :linenos:
 
-    #!/bin/bash
+    a = 2
 
-    #PBS -P vp91 
-    #PBS -q normal
-    #PBS -l ncpus=48
-    #PBS -l mem=10GB
-    #PBS -l walltime=00:02:00
-    #PBS -N testScript
+    b = 'abc'
 
-    module load python3/3.11.0
-    module load papi/7.0.1
+    a = 3.14
 
-    . /scratch/vp91/Training-Venv/intro-parallel-prog/bin/activate
+.. admonition:: Explanation
+   :class: attention
 
-    which python
-
-#. **P** - Gadi project (sometimes called account) to use
-#. **q** - Gadi queue to use
-#. **ncpus** - Total number of cores requested
-#. **ngpus** - Total number of GPUs requested
-#. **mem** - Total memory requested
-#. **l** - Total wall time for which the resources are provisioned
-#. **N** - Name of the job 
+   You can think of a variable as a box that you can put things in. You can also change the contents of the box whenever you want.
+   The name of the box is the variable name, and the contents of the box are the value of the variable.
+   In the example above, we created a variable called `a` and assigned it the value `2`. Then we changed the value of `a` to `3.14`.
+   
+   You can use variables to store all kinds of data, including numbers, strings, lists, and more.
+   You can also use variables to perform calculations and manipulate data.
 
 
-For more PBS Directives please check the `Gadi document <https://opus.nci.org.au/display/Help/PBS+Directives+Explained>`_ and for more details on the 
-different Gadi queues please check out the corresponding `Gadi document <https://opus.nci.org.au/display/Help/Queue+Structure>`_ .
+Variable names:
 
-All the Python code are available in the directory `python/src`` while all the job scripts are available in the 
-directory `python/jobScripts`. To submit a job use 
-the command
+* can include letters, digits, and underscores
+* cannot start with a digit
+* are case sensitive.
 
-.. code-block:: console
-    :linenos:
+Types of Data
+----------------
 
-    qsub 0_test_script.pbs
+Python knows various types of data and the common ones are:
 
-and to know the status of your job use the command
+* integer numbers
+* floating point numbers
+* strings
 
-.. code-block:: console
-    :linenos:
-
-    qstat <jobid>
-
-To know get the details about the job use the command
-
-.. code-block:: console
-    :linenos:
-
-    qstat -swx <jobid>
-
-
-**Interactive Jobs:** An interactive job allows you to interact directly with the HPC system and the job while it's 
- running. This means you have a command-line shell (e.g., terminal) on the compute node where you 
- can run commands in real-time.
-
-.. code-block:: console
-    :linenos:
-
-    qsub -I -q normal  -P vp91 -l walltime=00:10:00,ncpus=48,mem=10GB
 
 .. admonition:: Key Points
    :class: hint
 
-    #. Multiple PBS directives are available request a job.
-    #. Gadi uses some custom directives.
-    #. There are two modes to request a job - batched and interactive.
-
+    #. Variables can store data of different types, such as numbers, strings, and lists.
+    #. You can change the value of a variable at any time.  
+    #. Each varibale has a type.  
